@@ -1,14 +1,8 @@
+# dependencies
 
 import os
-
 import pandas as pd
-
-import sqlalchemy
-from sqlalchemy import create_engine
-
-
 from flask import Flask, jsonify, render_template
-from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 
 
@@ -23,30 +17,34 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     """Return the homepage."""
-    print("Server received request for 'Home' page...")
     return render_template("index.html")
 
 
-# @app.route("/enrollment")
-# def enrollment():
-#     conn = psycopg2.connect(host="localhost",database="schools_db", user="postgres", password="postgres")
-#     cur = conn.cursor()
+@app.route("/district_ids")
+def names():
+    """Return list of district IDs to populate drop down selector"""
+    conn = psycopg2.connect(host="localhost",database="teacher_strike_db", user="postgres", password="postgres")
+    cur = conn.cursor()
 
-#     enroll_data = []
-    
-#     cur.execute("SELECT * FROM district_enrollment")
-#     for row in cur:
-#         print(row)
-#         enroll_data.append(row)
+    district_ids = {}
 
-#     cur.close()
-#     conn.close()
+    cur.execute("SELECT * FROM district_enrollment")
 
-#     return jsonify(enroll_data)
+    district_name = []
+
+    for row in cur:
+        print(row[0])
+        district_name.append(row[0])
+
+    district_ids["district_ids"] = district_name
+
+    return jsonify(district_ids)
+
 
 @app.route("/enrollment/<district_id>")
 def enrollment(district_id):
-    conn = psycopg2.connect(host="localhost",database="schools_db", user="postgres", password="postgres")
+    """Return enrollment data points for each district"""
+    conn = psycopg2.connect(host="localhost",database="teacher_strike_db", user="postgres", password="postgres")
     cur = conn.cursor()
 
     enroll_data = {}
@@ -57,7 +55,6 @@ def enrollment(district_id):
     teacher_ratio = []
 
     for row in cur:
-        print(row)
 
         if(row[0] == district_id):
             print(row[0])
@@ -77,24 +74,59 @@ def enrollment(district_id):
     return jsonify(enroll_data)
 
 
-@app.route("/district_ids")
-def names():
-    conn = psycopg2.connect(host="localhost",database="schools_db", user="postgres", password="postgres")
+@app.route("/funding/<district_id>")
+def funding(district_id):
+    """Return funding data points for each district"""
+    conn = psycopg2.connect(host="localhost",database="teacher_strike_db", user="postgres", password="postgres")
     cur = conn.cursor()
 
-    district_ids = {}
+    funding_data = {}
+    
+    cur.execute("SELECT * FROM district_funding")
+    local = []
+    state = []
+    federal = []
 
-    cur.execute("SELECT * FROM district_enrollment")
-
-    district_name = []
 
     for row in cur:
-        print(row[0])
-        district_name.append(row[0])
+        if(row[1] == district_id):
+            print(row[4], row[5], row[6])
+            local.append(row[4])
+            state.append(row[5])
+            federal.append(row[6])
+    
+    print(district_id)
+        
+    funding_data["local"] = local
+    funding_data["state"] = state 
+    funding_data["federal"] = federal
 
-    district_ids["district_ids"] = district_name
+    cur.close()
+    conn.close()
 
-    return jsonify(district_ids)
+    return jsonify(funding_data)
+
+
+# INSERT MICHELLE'S ROUTE CODE HERE
+# @app.route("/testscores/<district_id>")
+# def testscores(district_id):
+#     """Return test score data points for each district"""
+#     conn = psycopg2.connect(host="localhost",database="teacher_strike_db", user="postgres", password="postgres")
+#     cur = conn.cursor()
+
+#     testscore_data = {}
+    
+#     cur.execute("SELECT * FROM district_testscores")
+
+#     for row in cur:
+#         if(row[0] == district_id):
+    
+#     print(district_id)
+        
+#     cur.close()
+#     conn.close()
+
+#     return jsonify(testscore_data)
 
 
 if __name__ == "__main__":
