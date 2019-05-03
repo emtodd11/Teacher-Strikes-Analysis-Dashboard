@@ -1,0 +1,5 @@
+District Code,Entity,Test Year,Test Id,Students Tested,Percentage Standard Exceeded,Percentage Standard Met,At or Above Proficient
+nj,New Jersey,2017,ELA,,,,48
+nj,New Jersey,2017,Math,,,,48
+jc_nj,Jersey City,2017,ELA,15230,11.1,32.9,42.8
+jc_nj,Jersey City,2017,Math,15093,4.6,23.9,28.4

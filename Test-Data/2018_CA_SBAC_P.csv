@@ -1,0 +1,11 @@
+District Code,Entity,Test Year,Test Id,Students Tested,Percentage Standard Exceeded,Percentage Standard Met,At or Above Proficient
+ca,California,2018,1,3180571,21.25,28.63,49.88
+ca,California,2018,2,3187408,18.64,20.01,38.65
+a_county,Alameda County Office of Education,2018,1,115869,28.82,27.23,56.05
+a_county,Alameda County Office of Education,2018,2,116253,28.8,19.8,48.6
+oak_ca,Oakland Unified School District,2018,2,17883,11.79,15.02,26.81
+oak_ca,Oakland Unified School District,2018,1,17764,13.26,19.86,33.12
+la_county,Los Angeles County Office of Education,2018,1,758049,20.58,28.35,48.93
+la_county,Los Angeles County Office of Education,2018,2,759813,17.66,19.8,37.46
+la_ca,Los Angeles Unified School District,2018,2,256447,13.67,17.95,31.62
+la_ca,Los Angeles Unified School District,2018,1,255489,16.49,25.82,42.31

@@ -1,0 +1,13 @@
+District Code,Entity,Test Year,Test Id,Students Tested,Percentage Standard Exceeded,Percentage Standard Met,At or Above Proficient
+us_total,National Public,2017,1,,,,35
+us_total,National Public,2017,2,,,,36
+ca,California,2017,1,3209613,20.12,28.44,48.56
+ca,California,2017,2,3220894,17.6,19.96,37.56
+a_county,Alameda County Office of Education,2017,2,117010,27.56,19.81,47.37
+a_county,Alameda County Office of Education,2017,1,116292,27.2,27.48,54.68
+oak_ca,Oakland Unified School District,2017,2,18013,11.25,14.25,25.51
+oak_ca,Oakland Unified School District,2017,1,17697,11.92,19.94,31.86
+la_county,Los Angeles County Office of Education,2017,1,769958,19.15,28.05,47.2
+la_county,Los Angeles County Office of Education,2017,1,773720,16.32,19.57,35.89
+la_ca,Los Angeles Unified School District,2017,1,260826,14.59,24.96,39.55
+la_ca,Los Angeles Unified School District,2017,2,263093,12.4,17.46,29.86

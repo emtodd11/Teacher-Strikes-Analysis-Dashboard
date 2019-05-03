@@ -1,0 +1,5 @@
+District Code,Entity,Test Year,Test Id,Students Tested,Percentage Standard Exceeded,Percentage Standard Met,At or Above Proficient
+mi,Michigan,2017,ELA,,,,33
+mi,Michigan,2017,Math,,,,33.5
+det_mi,Detroit Public Schools Community District,2017,ELA,18274,2.2,9.8,19.9
+det_mi,Detroit Public Schools Community District,2017,Math,18255,1.6,7.1,15.4
