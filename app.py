@@ -107,26 +107,40 @@ def funding(district_id):
     return jsonify(funding_data)
 
 
-# INSERT MICHELLE'S ROUTE CODE HERE
-# @app.route("/testscores/<district_id>")
-# def testscores(district_id):
-#     """Return test score data points for each district"""
-#     conn = psycopg2.connect(host="localhost",database="teacher_strike_db", user="postgres", password="postgres")
-#     cur = conn.cursor()
+@app.route("/testscores/<district_id>")
+def testscores(district_id):
+    """Return test score data points for each district"""
+    conn = psycopg2.connect(host="localhost",database="teacher_strike_db", user="postgres", password="postgres")
+    cur = conn.cursor()
 
-#     testscore_data = {}
+    testscore_data = {}
     
-#     cur.execute("SELECT * FROM district_testscores")
+    cur.execute("SELECT * FROM district_testscores")
 
-#     for row in cur:
-#         if(row[0] == district_id):
-    
-#     print(district_id)
-        
-#     cur.close()
-#     conn.close()
+    entity = []
+    year = [] 
+    test = []
+    proficient = []
 
-#     return jsonify(testscore_data)
+    for row in cur:
+        if(row[0] == district_id):
+            print(row[1], row[2], row[3], row[7])
+            entity.append(row[1])
+            year.append(row[2])
+            test.append(row[3])
+            proficient.append(row[7])
+
+    print(district_id)
+
+    testscore_data["entity"] = entity
+    testscore_data["year"] = year
+    testscore_data["test"] = test
+    testscore_data["proficient"] = proficient
+           
+    cur.close()
+    conn.close()
+
+    return jsonify(testscore_data)
 
 
 if __name__ == "__main__":
